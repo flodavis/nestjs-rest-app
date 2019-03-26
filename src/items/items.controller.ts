@@ -12,8 +12,8 @@ export class ItemsController {
         return this.itemsService.findAll();
     }
     @Get(':id')
-    findOne(@Param() param): string {
-        return `Item ${param.id}`;
+    findOne(@Param('id') id): Item {
+        return this.itemsService.findOne(id);
     }
     @Post()
     create(@Body() CreateItemDto: CreateItemDto): string {
