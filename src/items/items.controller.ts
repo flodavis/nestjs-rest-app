@@ -15,9 +15,10 @@ export class ItemsController {
     async findOne(@Param('id') id): Promise <Item[]> {
         return this.itemsService.findOne(id);
     }
+
     @Post()
-    create(@Body() CreateItemDto: CreateItemDto): string {
-        return `Name: ${CreateItemDto.name} Desc: ${CreateItemDto.description} Qty: ${CreateItemDto.qty}`;
+    create(@Body() CreateItemDto: CreateItemDto): Promise<Item> {
+        return this.itemsService.create(CreateItemDto) ;
     }
     @Delete(':id')
     delete(@Param('id') id): string{
